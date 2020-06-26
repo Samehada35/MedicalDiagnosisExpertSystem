@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.Controller">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichier">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Quitter">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Règles">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#showRuleBase" text="Consulter base de règles" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Données">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#describeData" text="Description des données" />
+                  <MenuItem mnemonicParsing="false" onAction="#diagnose" text="Diagnostic" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Aide">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#showAbout" text="A propos">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   
+   <center>
+      <TabPane id="main-tab-pane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab closable="false" text="Accueil">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="441.0" minWidth="10.0" prefWidth="441.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="0.0" prefWidth="432.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="925.0" minWidth="400.0" prefWidth="493.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-title" text="Système expert médical" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+                              <ImageView fitHeight="217.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <image>
+                                    <Image url="@../images/logo.png" />
+                                 </image>
+                              </ImageView>
+                              <Text id="description-text" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Pour diagnostiquer votre maladie, cliquez sur Données-&gt;Diagnostic&#10;Vous pourrez aussi vous informer sur chaque maladie/symptôme." GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+          <Tab closable="false" text="Base de règles">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="394.0" layoutY="129.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="341.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="636.0" minHeight="10.0" prefHeight="636.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Liste des règles" GridPane.halignment="CENTER" />
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <content>
+                                    <Text id="rules-list" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="-" />
+                                 </content>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                                 </GridPane.margin>
+                              </ScrollPane>
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+               </content></Tab>
+            <Tab closable="false" text="Description des données">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane hgap="5.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="705.0" minWidth="10.0" prefWidth="664.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.0" minWidth="10.0" prefWidth="677.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="227.0" minHeight="0.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="465.0" minHeight="10.0" prefHeight="248.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="464.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="464.0" minHeight="10.0" prefHeight="318.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Sélectionnez une maladie ou un symptôme pour l'afficher en détail" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+                              <GridPane GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="183.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des maladies :" />
+                                    <ListView id="diseases-list-view" onMouseClicked="#describeDisease" prefHeight="136.0" prefWidth="710.0" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des symptômes :" />
+                                    <ListView id="symptoms-list-view" onMouseClicked="#describeSymptom" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Description :" GridPane.rowIndex="2" />
+                              <Text id="description-text" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliquez sur un symptome ou bien une maladie pour avoir sa description" wrappingWidth="700.0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </GridPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="Diagnostic">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <top>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-title" text="Entrez la liste de vos symptômes pour connaitre votre maladie" BorderPane.alignment="CENTER" />
+                           </top>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <center>
+                              <GridPane maxHeight="150.0" minHeight="150.0" prefHeight="150.0" BorderPane.alignment="TOP_CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <BorderPane.margin>
+                                    <Insets top="50.0" />
+                                 </BorderPane.margin>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Méthode de déduction : " />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="But :" GridPane.columnIndex="1" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                                       <children>
+                                          <RadioButton id="forward-chaining-choice" mnemonicParsing="false" selected="true" text="Chainage avant">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="chainingMethod" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton id="backward-chaining-choice" mnemonicParsing="false" text="Chainage arrière" toggleGroup="$chainingMethod" />
+                                       </children>
+                                    </VBox>
+                                    <ComboBox id="disease-detection-choice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                    <Button id="diagnose-button" mnemonicParsing="false" text="Diagnostiquer" GridPane.columnIndex="2" GridPane.rowSpan="2" />
+                                 </children>
+                              </GridPane>
+                           </center>
+                           <bottom>
+                              <VBox prefHeight="425.0" prefWidth="1346.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Liste symptômes :" />
+                                    <ScrollPane prefViewportHeight="395.0" prefViewportWidth="1346.0">
+                                       <content>
+                                          <VBox id="symptom-wrapper" prefHeight="395.0" prefWidth="1329.0">
+                                             <children>
+                                                <HBox prefHeight="23.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Glucose Plasmatique à jeun" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <TextField styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Fièvre" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Transpiration" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Frottis" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="VIH" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Parasitémie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Hémoglobine" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Tension Artérielle" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <ComboBox prefWidth="150.0" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Toux" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Amaigrissement" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Anorexie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Asthénie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Adénopathies cervicales" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Rechutes" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Traitement après interruption" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Traitement après échec thérapeutique" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Coma" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Leucémie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Hallucinations" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Hémorragie externe" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Hémorragie interne" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Battement de coeur anormal" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Sensation Froid" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Fièvre Ondulante" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Oedème" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Splénomégalie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Ecchymose" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Léthargie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Jaunisse" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Hépatomégalie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Gonflement Ganglions" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="41.0" prefWidth="1346.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="simple-text" text="Adénopathie" />
+                                                      <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                      <CheckBox mnemonicParsing="false" styleClass="control" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                           </bottom>
+                        </BorderPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Résultats">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <top>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="big-title" text="Résultats de diagnostic :" BorderPane.alignment="CENTER" />
+                           </top>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <center>
+                              <ScrollPane prefViewportHeight="19.951171875" prefViewportWidth="27.6708984375">
+                                 <content>
+                                    <Text id="diagnose-result" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="-" BorderPane.alignment="TOP_LEFT">
+                                       <BorderPane.margin>
+                                          <Insets top="20.0" />
+                                       </BorderPane.margin>
+                                    </Text>
+                                 </content>
+                              </ScrollPane>
+                           </center>
+                        </BorderPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

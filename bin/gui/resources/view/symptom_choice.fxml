@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox maxWidth="400.0" minWidth="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text id="symptom-name" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+      <Region HBox.hgrow="ALWAYS" />
+      <CheckBox alignment="CENTER_RIGHT" mnemonicParsing="false" />
+   </children>
+</HBox>
